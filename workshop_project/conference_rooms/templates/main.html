@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Conference rooms</title>
+</head>
+<h4>Conference rooms</h4>
+
+<form action="" method="post">
+    {% csrf_token %}
+    Lookup for a room with specific features:<br>
+    <input type="text" name="name" placeholder="Name"/>
+    <br>
+    <input type="number" name="capacity" placeholder="Minimum capacity"/>
+    <br>
+    <label>Projector available, unavailable</label>
+    <input type="checkbox" name="projector_on"/> <input type="checkbox" name="projector_off" /><br>
+    <label>Available to reserve today</label>
+    <input type="checkbox" name="available"/><br>
+    <button type="submit">Search</button><br>
+</form>
+<br>
+<ol>
+{% for room in rooms %}
+    <li><a style="font-size:21px;" href="/room/{{room.id}}">{{room.name}}</a><br>
+    Cap: {{room.capacity}}, Projector: {{room.projector}}, Other information: {{room.other_features}}<br>
+    <a style="font-size:13px;" href="/room/modify/{{room.id}}">Edit</a> | <a style="font-size:13px;" href="/room/delete/{{room.id}}">Delete</a> | <a style="font-size:13px;" href="/room/reserve/{{room.id}}">Reserve</a><br>
+    Available: {{room.available}}<br>
+    </li>
+    {% empty %}
+    No matching rooms, sorry.
+{% endfor %}
+</ol>
+
+<p style=" position: absolute; bottom: 0; left: 0; width: 100%; text-align: right;">Piotr Zaorski</p>
+
+</body>
+</html>

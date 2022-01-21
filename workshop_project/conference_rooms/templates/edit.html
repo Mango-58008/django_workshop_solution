@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Name" value="{{room.name}}"/><br>
+    <input type="number" name="capacity" min="10" max="50" value="{{room.capacity}}"/><br>
+    <label>Is projector available?
+        <input type="checkbox" name="projector" value="{{room.projector}}">
+    </label><br>
+    <input type="text" name="other_features" placeholder="Other features" value="{{room.other_features}}"/><br>
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>

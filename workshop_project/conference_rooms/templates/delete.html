@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <label>Input 'Delete' if you are sure <b>{{room.name}}</b> should be deleted.</label><br>
+    <input type="text" name="message" /><br><br>
+    <button type="submit">Delete</button><br>
+    <a style="font-size:18px;" href="http://127.0.0.1:8000/">Back</a>
+</form>
+
+</body>
+</html>

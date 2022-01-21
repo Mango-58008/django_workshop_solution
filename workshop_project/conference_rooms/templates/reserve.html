@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <label>Date of reservation:</label><br>
+    <input type="date" name="reservation_date"><br>
+    <input type="text" name="comment" placeholder="Comment">
+    <button type="submit">Reserve</button>
+</form>
+<br><br><a href="http://127.0.0.1:8000/">Home</a><br>
+
+<label><b>Future reservations:</b></label><br>
+<ol>
+{% for reservation in reservations %}
+    <li><a style="font-size:18px;">{{reservation.reservation_date}}</a></li><br>
+    <a style="font-size:14px;">{{reservation.comment}}</a><br>
+{% empty %}
+    <h4>No reservations made.</h4>
+{% endfor %}
+</ol>
+
+</body>
+</html>
